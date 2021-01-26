@@ -1,11 +1,11 @@
 // initialize variables
 const quizList = [
-    {question:'What is 1+1', a:'2', b:'4', c:'6', d:'8', ans:'a'},
-    {question:'What is 1+2', a:'6', b:'3', c:'5', d:'10', ans:'b'},
-    {question:'What is 1+3', a:'9', b:'b', c:'q', d:'4', ans:'d'},
-    {question:'What is 1+4', a:'7', b:'apples', c:'5', d:'20', ans:'c'},
-    {question:'What is 1+5', a:'2', b:'0', c:'99', d:'6', ans:'d'},
-    {question:'What is 1+6', a:'11', b:'7', c:'22', d:'5', ans:'b'}
+    {question:'What is 1+1', a:'2', b:'4', c:'a', d:'11', ans:'a'},
+    {question:'What is love', a:'baby', b:'dont', c:'hurt', d:'me', ans:'c'},
+    {question:'When is Christmas', a:'When September ends', b:'July', c:'Everyday', d:'December', ans:'d'},
+    {question:'Say apple', a:'nod', b:'apples', c:'jump', d:'glados', ans:'c'},
+    {question:'Slow clap module', a:'Potato powered', b:'\*clap clap\*', c:'Makes lemons', d:'Makes grenades', ans:'a'},
+    {question:'What is 2+2', a:'11', b:'22', c:'4', d:'5', ans:'b'}
 ]
 let score = 0;
 let timeInSec = 90;
@@ -28,6 +28,11 @@ function startBtn() {
     // if starting quiz
     else {
         document.querySelector('#startBtn').innerHTML = 'Stop';
+        // show buttons & reset score
+        document.querySelector('#btn1').classList.remove('invisible');
+        document.querySelector('#btn2').classList.remove('invisible');
+        document.querySelector('#btn3').classList.remove('invisible');
+        document.querySelector('#btn4').classList.remove('invisible');
         document.querySelector('#score').innerHTML = '0';
         score = 0;
         quiz = quizList.slice();
@@ -81,11 +86,11 @@ function endGame() {
     // Congratulations if time > 0 && quiz.length < 1
     if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = 'You finished!';
     else document.querySelector('#question').innerHTML = 'Better luck next time...';
-    // Reset buttons
-    document.querySelector('#btn1').innerHTML = '1';
-    document.querySelector('#btn2').innerHTML = '2';
-    document.querySelector('#btn3').innerHTML = '3';
-    document.querySelector('#btn4').innerHTML = '4';
+    // Hide buttons
+    document.querySelector('#btn1').classList.add('invisible');
+    document.querySelector('#btn2').classList.add('invisible');
+    document.querySelector('#btn3').classList.add('invisible');
+    document.querySelector('#btn4').classList.add('invisible');
     // reset stats
     clearInterval(interval);
     document.querySelector('#startBtn').innerHTML = 'Start';
