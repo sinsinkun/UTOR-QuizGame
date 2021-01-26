@@ -67,7 +67,6 @@ function startTimer() {
 }
 
 function readAns(btn) {
-    console.log('pressed button: ' + btn);
     if (btn === thisQ.ans) {
         score++;
         document.querySelector('#score').innerHTML = score;
