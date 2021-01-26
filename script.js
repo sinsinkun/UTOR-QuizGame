@@ -99,6 +99,6 @@ function endGame() {
 
 function clearHS() {
     highScore = 0;
-    localStorage.removeItem(highScore);
+    localStorage.removeItem('highScore');
     document.querySelector('#highScore').innerHTML = '0';
 }
