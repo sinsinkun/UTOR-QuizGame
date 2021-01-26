@@ -1,18 +1,21 @@
 // initialize variables
 const quizList = [
-    {question:'What is 1+1', a:'2', b:'4', c:'a', d:'11', ans:'a'},
-    {question:'What is love', a:'baby', b:'dont', c:'hurt', d:'me', ans:'c'},
-    {question:'When is Christmas', a:'When September ends', b:'July', c:'Everyday', d:'December', ans:'d'},
-    {question:'Say apple', a:'nod', b:'apples', c:'jump', d:'glados', ans:'c'},
-    {question:'Slow clap module', a:'Potato powered', b:'\*clap clap\*', c:'Makes lemons', d:'Makes grenades', ans:'a'},
-    {question:'What is 2+2', a:'11', b:'22', c:'4', d:'5', ans:'b'}
+    {question:'What is 1+1?', a:'2', b:'4', c:'a', d:'11', ans:'a'},
+    {question:'What is love?', a:'baby', b:'dont', c:'hurt', d:'me', ans:'c'},
+    {question:'When is Christmas?', a:'When September ends', b:'July', c:'Everyday', d:'December', ans:'d'},
+    {question:'Say apple?', a:'nod', b:'apples', c:'jump', d:'glados', ans:'c'},
+    {question:'Slow clap module?', a:'Potato powered', b:'\*clap clap\*', c:'Makes lemons', d:'Makes grenades', ans:'a'},
+    {question:'What is \"2\"+\"2\"?', a:'11', b:'22', c:'4', d:'5', ans:'b'},
+    {question:'What is the airspeed of an unladen swallow?', a:'24 miles/hr', b:'African or European', c:'Mach 2', d:'10 L/min', ans:'b'},
+    {question:'What is the study of wombo?', a:'You wombo', b:'I wombo', c:'He/She/We wombo', d:'Wombology', ans:'d'},
+    {question:'Who lives in a pineapple under the sea?', a:'Patrick Star', b:'Spongebob Squarepants', c:'Sandy Cheeks', d:'Mr. Krabs', ans:'b'},
+    {question:'Nyan-', a:'-cat', b:'-bread', c:'-ners', d:'-rlathotep', ans:'a'},
 ]
 let score = 0;
 let timeInSec = 90;
 let thisQ, interval;
 let highScore = localStorage.highScore ? localStorage.highScore : 0;
 document.querySelector('#highScore').innerHTML = highScore;
-
 
 // add event listeners
 document.querySelector('#startBtn').addEventListener('click', startBtn);
@@ -71,7 +74,10 @@ function readAns(btn) {
         score++;
         document.querySelector('#score').innerHTML = score;
     }
-    else timeInSec -= 10;
+    else {
+        timeInSec -= 10;
+        document.querySelector('#time').innerHTML = timeInSec;
+    }
     nextQuestion();
 }
 
@@ -83,8 +89,8 @@ function endGame() {
         document.querySelector('#highScore').innerHTML = score;
     }
     // Congratulations if time > 0 && quiz.length < 1
-    if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = 'You finished!';
-    else document.querySelector('#question').innerHTML = 'Better luck next time...';
+    if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = `You got ${score}/${quizList.length}. Congratulations!`;
+    else document.querySelector('#question').innerHTML = 'Out of Time...';
     // Hide buttons
     document.querySelector('#btn1').classList.add('invisible');
     document.querySelector('#btn2').classList.add('invisible');
