@@ -76,18 +76,22 @@ function readAns(btn) {
     if (btn === thisQ.ans) {
         score++;
         document.querySelector('#score').innerHTML = score;
+        nextQuestion();
     }
     else {
         timeInSec -= 10;
-        document.querySelector('#time').innerHTML = timeInSec;
-        document.querySelector('#time').style.color = 'red';
-        document.querySelector('#time').style.fontWeight = '900';
-        setTimeout(() => {
-            document.querySelector('#time').style.color = '';
-            document.querySelector('#time').style.fontWeight = '';
-        }, 500);
+        if (timeInSec < 0) endGame();
+        else {
+            document.querySelector('#time').innerHTML = timeInSec;
+            document.querySelector('#time').style.color = 'red';
+            document.querySelector('#time').style.fontWeight = '900';
+            setTimeout(() => {
+                document.querySelector('#time').style.color = '';
+                document.querySelector('#time').style.fontWeight = '';
+            }, 500);
+            nextQuestion();
+        }
     }
-    nextQuestion();
 }
 
 function endGame() {
