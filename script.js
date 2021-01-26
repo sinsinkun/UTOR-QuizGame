@@ -9,7 +9,7 @@ const quizList = [
     {question:'What is the airspeed of an unladen swallow?', a:'24 miles/hr', b:'African or European', c:'Mach 2', d:'10 L/min', ans:'b'},
     {question:'What is the study of wombo?', a:'You wombo', b:'I wombo', c:'He/She/We wombo', d:'Wombology', ans:'d'},
     {question:'Who lives in a pineapple under the sea?', a:'Patrick Star', b:'Spongebob Squarepants', c:'Sandy Cheeks', d:'Mr. Krabs', ans:'b'},
-    {question:'Nyan-', a:'-cat', b:'-bread', c:'-ners', d:'-rlathotep', ans:'a'},
+    {question:'Nyan-', a:'-cat', b:'-bread', c:'-ners', d:'-rlathotep', ans:'a'}
 ]
 let score = 0;
 let timeInSec = 90;
@@ -47,16 +47,19 @@ function startBtn() {
 function nextQuestion() {
     let randNum;
     // check if questions are left
-    if (quiz.length > 0) randNum = Math.floor(Math.random() * (quiz.length-1));
+    if (quiz.length > 0) {
+        randNum = Math.floor(Math.random() * quiz.length);
+        console.log(randNum + '/' + quiz.length);
+        // populate UI with quiz answers
+        thisQ = quiz[randNum];
+        quiz.splice(randNum,1);
+        document.querySelector('#question').innerHTML = thisQ.question;
+        document.querySelector('#btn1').innerHTML = thisQ.a;
+        document.querySelector('#btn2').innerHTML = thisQ.b;
+        document.querySelector('#btn3').innerHTML = thisQ.c;
+        document.querySelector('#btn4').innerHTML = thisQ.d;
+    }
     else endGame();
-    // populate UI with quiz answers
-    thisQ = quiz[randNum];
-    quiz.splice(randNum,1);
-    document.querySelector('#question').innerHTML = thisQ.question;
-    document.querySelector('#btn1').innerHTML = thisQ.a;
-    document.querySelector('#btn2').innerHTML = thisQ.b;
-    document.querySelector('#btn3').innerHTML = thisQ.c;
-    document.querySelector('#btn4').innerHTML = thisQ.d;
 }
 
 function startTimer() {
