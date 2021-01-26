@@ -80,6 +80,12 @@ function readAns(btn) {
     else {
         timeInSec -= 10;
         document.querySelector('#time').innerHTML = timeInSec;
+        document.querySelector('#time').style.color = 'red';
+        document.querySelector('#time').style.fontWeight = '900';
+        setTimeout(() => {
+            document.querySelector('#time').style.color = '';
+            document.querySelector('#time').style.fontWeight = '';
+        }, 500);
     }
     nextQuestion();
 }
@@ -92,8 +98,8 @@ function endGame() {
         document.querySelector('#highScore').innerHTML = score;
     }
     // Congratulations if time > 0 && quiz.length < 1
-    if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = `You got ${score}/${quizList.length}. Congratulations!`;
-    else document.querySelector('#question').innerHTML = 'Out of Time...';
+    if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = `You finished! You got ${score}/${quizList.length}.`;
+    else document.querySelector('#question').innerHTML = `Out of Time... You got ${score}/${quizList.length}.`;
     // Hide buttons
     document.querySelector('#btn1').classList.add('invisible');
     document.querySelector('#btn2').classList.add('invisible');
