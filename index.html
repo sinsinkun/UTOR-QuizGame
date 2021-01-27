@@ -24,17 +24,14 @@
 		}
 	</style>
 	
-	<div class="container-sm mt-3" style="max-width: 800px; background-color: #eeeeee;">
+	<div class="container-sm mt-3" style="max-width: 800px; background-color: #f8f8f8;">
 		<!-- Header Section -->
 		<div class="row pt-3" style="border-bottom:2px solid grey;">
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<h1>Quiz Game</h1>
 			</div>
 			<div class="col-4 col-md-2 d-flex mt-auto justify-content-end">
 				<span>Current Score: <span id="score">0</span></span>
-			</div>
-			<div class="col-4 col-md-2 d-flex mt-auto justify-content-end">
-				<span>High Score: <span id="highScore">0</span></span>
 			</div>
 			<div class="col-4 col-md-2 d-flex mt-auto justify-content-end">
 				<span>Time Left: <span id="time">0</span></span>
@@ -66,7 +63,25 @@
 				<button id="startBtn" type="button" class="btn btn-primary btn-lg">Start</button>
 			</div>
 		</div>
-		<br/>
+		<br />
+		<br />
+		<!-- Highscore List -->
+		<div class="row">
+			<table class="table table-sm table-striped">
+				<thead class="table-secondary">
+					<tr>
+						<th class="col-6" scope="col">Name</th>
+						<th class="col-6" scope="col">High Score</th>
+					</tr>
+				</thead>
+				<tbody id="hsTable">
+					<tr>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 		<!-- Footer -->
 		<div class="row">
 			<div class="col d-flex justify-content-end">
