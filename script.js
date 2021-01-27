@@ -108,7 +108,7 @@ function endGame() {
     // stop timer
     clearInterval(interval);
     // Congratulations if time > 0 && quiz.length < 1
-    if (timeInSec > -1 && quiz.length < 1) document.querySelector('#question').innerHTML = `You finished! You got ${score}/${quizList.length}.`;
+    if (timeInSec > -1) document.querySelector('#question').innerHTML = `You finished! You got ${score}/${quizList.length}.`;
     else document.querySelector('#question').innerHTML = `Out of Time... You got ${score}/${quizList.length}.`;
     // Hide buttons
     document.querySelector('#btn1').classList.add('invisible');
@@ -132,10 +132,8 @@ function saveHS() {
     else if (nm.length === 0) nm = '-';
     else if (highScore.length > 0) {
         // save new score to highScore list
-        console.log('attempting to save highscore');
         let curLength = highScore.length;
         for (let i = 0; i < curLength; i++) {
-            console.log('checking current scores');
             if (score > highScore[i].score) {
                 highScore.splice(i, 0, { name: nm, score: score });
                 break;
@@ -145,9 +143,7 @@ function saveHS() {
         // if too many scores, remove the lowest score
         if (highScore.length > maxHighScore) highScore.pop();
         // save to local storage
-        console.log('before saving to local');
         localStorage.highScore = JSON.stringify(highScore);
-        console.log('saved to local');
         // display highscores
         document.querySelector('#hsTable').innerHTML = '';
         for (let i=0; i < highScore.length; i++) {
